@@ -51,3 +51,24 @@ document.querySelector('#app').innerHTML = `
 
   </main>
 `
+
+function updateClock() {
+  const now = new Date();
+
+  const hours = String(now.getHours()).padStart(2,'0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  document.querySelector('#clock').textContent = `${hours}:${minutes}`;
+
+  const date = now.toLocaleDateString('en-IN', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  document.querySelector('#date').textContent = date;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
