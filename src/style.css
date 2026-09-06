@@ -1,3 +1,13 @@
+:root {
+  --accent-color: #3b82f6;
+  --background-color: #101114;
+  --text-color: #ffffff;
+  --muted-text: rgba(255, 255, 255, 0.65);
+  --card-background: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --wallpaper-overlay: rgba(10, 11, 14, 0.55);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,8 +17,17 @@
 body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background: #101114;
-  color: white;
+  background:
+    linear-gradient(
+      var(--wallpaper-overlay),
+      var(--wallpaper-overlay)
+    ),
+    url("public/images/walpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .pulse-container {
@@ -30,13 +49,20 @@ body {
 }
 
 .settings-button {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
+  border: 1px solid var(--border-color);
+  background: var(--card-background);
+  color: var(--text-color);
   width: 42px;
   height: 42px;
   border-radius: 50%;
   cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.settings-button:hover{
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: rotate(20deg);
 }
 
 .hero {
@@ -85,6 +111,14 @@ body {
   border: none;
   border-radius: 14px;
   cursor: pointer;
+  background: var(--accent-color);
+  color: white;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#search-form button:hover{
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 
 .dashboard {
@@ -98,8 +132,8 @@ body {
   border-radius: 20px;
 
   /* translucent glass effect */
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
 
   /* glass blur */
   backdrop-filter: blur(15px);
@@ -171,3 +205,147 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+body[data-theme="light"] {
+  --background-color:#f4f5f7;
+  --text-color: #111111;
+  --muted-text: rgba(0, 0, 0, 0.6);
+  --card-background: rgba(0, 0, 0, 0.05);
+  --border-color: rgba(0, 0, 0, 0.12);
+  --wallpaper-overlay: rgba(255, 255, 255, 0.45);
+}
+
+body[data-theme="dark"] {
+  --background-color: #101114;
+  --text-color: #ffffff;
+  --muted-text: rgba(255, 255, 255, 0.65);
+  --card-background: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --wallpaper-overlay: rgba(10, 11, 14, 0.55);
+}
+
+body[data-accent="blue"] {
+  --accent-color: #3b82f6;
+}
+
+body[data-accent="red"] {
+  --accent-color: #ef4444;
+}
+
+body[data-accent="purple"] {
+  --accent-color: #a855f7;
+}
+
+body[data-accent="green"] {
+  --accent-color: #22c55e;
+}
+
+body[data-accent="orange"] {
+  --accent-color: #f97316;
+}
+
+.settings-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100vh;
+  padding: 30px;
+  background: var(--background-color);
+  border-left: 1px solid var(--border-color);
+  transform: translateX(100%);
+  transition: transfrom 0.3s ease;
+  z-index: 1000;
+}
+
+.settings-panel.open {
+  transform: translateX(0);
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.settings-header h2 {
+  font-size: 24px;
+}
+
+.close-settings {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--card-background);
+  color: var(--text-color);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.setting-group {
+  margin-bottom: 35px;
+}
+
+.setting-group h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.theme-options {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-option   {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--card-background);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.theme-option:hover {
+  border-color: var(--accent-color);
+}
+
+.accent-options {
+  display: flex;
+  gap: 12px;
+}
+
+.accent-option {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+}
+
+.accent-option:hover {
+  transform: scale(1.1);
+}
+
+.accent-option.blue {
+  background: #3b82f6;
+}
+
+.accent-option.red {
+  background: #ef4444;
+}
+
+.accent-option.purple {
+  background: #a855f7;
+}
+
+.accent-option.green {
+  background: #22c55e;
+}
+
+.accent-option.orange {
+  background: #f97316;
+}
+

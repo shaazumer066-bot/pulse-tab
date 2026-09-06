@@ -8,7 +8,7 @@ document.querySelector('#app').innerHTML = `
         <p class="greeting-text">Good evening</p>
       </div>
 
-      <button class="settings-button" aria-label="Open settings">
+      <button class="settings-button" id="settings-button" aria-label="Open settings">
         ⚙
       </button>
     </header>
@@ -58,6 +58,42 @@ document.querySelector('#app').innerHTML = `
 
     </section>
 
+    <div class="settings-panel" id="settings-panel">
+      <div class="settings-header">
+        <h2>Settings</h2>
+
+        <button class="close-settings" id="close-settings" aria-label="Close-settings">
+          ×
+        </button>
+      </div>
+
+      <div class="setting-group">
+        <h3>Theme</h3>
+
+        <div class="theme-options">
+          <button class="theme-option" data-theme="dark">
+            Dark
+          </button>
+
+          <button class="theme-option" data-theme="light">
+            Light
+          </button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <h3>Accent Color</h3>
+
+        <div class="accent-options">
+          <button class="accent-option blue" data-accent="blue" aria-label="Blue"></button>
+          <button class="accent-option red" data-accent="red" aria-label="Red"></button>
+          <button class="accent-option purple" data-accent="purple" aria-label="Purple"></button>
+          <button class="accent-option green" data-accent="green" aria-label="Green"></button>
+          <button class="accent-option orange" data-accent="orange" aria-label="Orange"></button>
+        </div>
+      </div>
+    </div>  
+
   </main>
 `
 
@@ -98,3 +134,40 @@ searchForm.addEventListener('submit', (event) => {
 
   window.location.href = searchUrl;
 });
+
+const settingsButton = document.querySelector('#settings-button');
+const settingsPanel = document.querySelector('#settings-panel');
+const closeSettings = document.querySelector('#close-settings');
+
+settingsButton.addEventListener('click', () => {
+  settingsPanel.classList.add('open');
+});
+
+closeSettings.addEventListener('click', () => {
+  settingsPanel.classList.remove('open');
+});
+
+const themeButtons = document.querySelectorAll('.theme-option');
+
+themeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+    const theme = button.dataset.theme;
+    document.body.dataset.theme = theme;
+    localStorage.setItem('pulse-theme', theme);
+  });
+});
+
+const accentButtons = document.querySelectorAll('.accent-option');
+
+accentButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const accent = button.dataset.accent;
+    document.body.dataset.accent = accent;
+    localStorage.setItem('pulse-accent', accent)
+  });
+});
+
+const savedTheme = localStorage.getItem('pulse-theme');
+const savedAccent = localStorage.getItem('pulse-accent');
+document.body.dataset.theme = savedTheme || 'dark';
+document.body.dataset.accent = savedAccent || 'blue';
