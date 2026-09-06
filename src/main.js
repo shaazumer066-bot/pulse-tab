@@ -34,7 +34,12 @@ document.querySelector('#app').innerHTML = `
 
       <article class="card weather-card">
         <h2>Weather</h2>
-        <p id="weather">Weather will appear here</p>
+        <p id="weather-location">Getting your location...</p>
+        <div class="weather-info">
+          <span id="weather-icon">🌤️</span>
+          <span id="weather-temperature">--°C </span>
+        </div>
+        <p id="weather-condition">Loading weather...</p>
       </article>
 
       <article class="card links-card">
@@ -171,3 +176,140 @@ const savedTheme = localStorage.getItem('pulse-theme');
 const savedAccent = localStorage.getItem('pulse-accent');
 document.body.dataset.theme = savedTheme || 'dark';
 document.body.dataset.accent = savedAccent || 'blue';
+
+async function getWeather(latitude, longitude) {
+  const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code&timezone=auto`;
+
+  try {
+    const response = await fetch(weatherUrl);
+    if(!response.ok) {
+      throw new Error('Weather request failed');
+    }
+    const data = await response.json();
+    const temperature = Math.round(data.current.temperature_2m);
+    const weatherCode = data.current.weather_code;
+
+    document.querySelector('#weather-temperature').textContent =
+     `${temperature}°C`;
+
+    document.querySelector('#weather-condition').textContent =
+    getWeatherDescription(weatherCode);
+
+    document.querySelector('#weather-icon').textContent =
+    getWeatherIcon(weatherCode);
+
+  } catch (error) {
+    console.error('Weather error:', error);
+
+    document.querySelector('#weather-condition').textContent =
+    'Unable to load weather';
+  }
+}
+
+function getWeatherDescription(code) {
+  if (code === 0) {
+    return 'Clear sky';
+  }
+
+  if (code === 1 || code === 2) {
+    return 'Partly cloudy';
+  }
+
+  if (code === 3) {
+    return 'Cloudy';
+  }
+
+  if ([45, 48].includes(code)) {
+    return 'Foggy';
+  }
+
+  if ([51, 53, 55, 56, 57].includes(code)) {
+    return 'Drizzle';
+  }
+
+  if ([61, 63, 65, 66, 67].includes(code)) {
+    return 'Rain';
+  }
+
+  if ([71, 73, 75, 77].includes(code)) {
+    return 'Snow';
+  }
+
+  if ([80, 81, 82].includes(code)) {
+    return 'Rain showers';
+  }
+
+  if ([95, 96, 99].includes(code)) {
+    return 'Thunderstorm';
+  }
+
+  return 'Unknown weather';
+}
+
+function getWeatherIcon(code) {
+  if (code === 0) {
+    return '☀️';
+  }
+
+  if (code === 1 || code === 2) {
+    return '🌤️';
+  }
+
+  if (code === 3) {
+    return '☁️';
+  }
+
+  if ([45, 48].includes(code)) {
+    return '🌫️';
+  }
+
+  if ([51, 53, 55, 56, 57].includes(code)) {
+    return '🌦️';
+  }
+
+  if ([61, 63, 65, 66, 67].includes(code)) {
+    return '🌧️';
+  }
+
+  if ([71, 73, 75, 77].includes(code)) {
+    return '❄️';
+  }
+
+  if ([80, 81, 82].includes(code)) {
+    return '🌦️';
+  }
+
+  if ([95, 96, 99].includes(code)) {
+    return '⛈️';
+  }
+
+  return '🌤️';
+}
+
+function getUserLocation() {
+  if (!navigator.geolocation) {
+    document.querySelector('#weather-location').textContent =
+      'Location is not supported';
+
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      getWeather(latitude, longitude);
+    },
+
+    () => {
+      document.querySelector('#weather-location').textContent =
+        'Location permission denied';
+
+      document.querySelector('#weather-condition').textContent =
+        'Unable to get your location';
+    }
+  );
+}
+
+getUserLocation();
