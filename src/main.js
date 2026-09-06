@@ -41,9 +41,18 @@ document.querySelector('#app').innerHTML = `
         <h2>Quick Links</h2>
 
         <div class="quick-links">
-          <a href="https://github.com" target="_blank">GitHub</a>
-          <a href="https://youtube.com" target="_blank">YouTube</a>
-          <a href="https://gmail.com" target="_blank">Gmail</a>
+          <a class="quick-link" href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <img class="link-icon" src="public/images/github.png" alt="GitHub">
+          <span class="link-name">Github</span>
+          </a> 
+          <a class="quick-link" href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+          <img class="link-icon" src="public/images/youtube.png" alt="YouTube">
+          <span class="link-name">YouTube</span>
+          </a>
+          <a class="quick-link" href="https://gmail.com" target="_blank" rel="noopener noreferrer">
+          <img class="link-icon" src="public/images/gmail.png" alt="Gmail">
+          <span class="link-name">Gmail</span>
+          </a>
         </div>
       </article>
 
