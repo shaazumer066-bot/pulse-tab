@@ -72,3 +72,20 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 1000);
+
+const searchForm = document.querySelector('#search-form');
+const searchInput = document.querySelector('#search-input');
+
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const query = searchInput.value.trim();
+
+  if(!query) {
+    return;
+  }
+
+  const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
+  window.location.href = searchUrl;
+});
