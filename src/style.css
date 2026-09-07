@@ -17,26 +17,30 @@
 body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
+  color: var(--text-color);
+
   background:
     linear-gradient(
       var(--wallpaper-overlay),
       var(--wallpaper-overlay)
     ),
     url("/pulse-tab/images/walpaper.jpg");
+
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: var(--text-color);
-  transition: background 0.3s ease, color 0.3s ease;
+
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .pulse-container {
   min-height: 100vh;
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   padding: 30px;
-  animation: pageFadeIn 0.8s ease;
+
+  animation: pageFadeIn 0.7s ease;
 }
 
 .top-bar {
@@ -51,42 +55,47 @@ body {
 }
 
 .settings-button {
-  border: 1px solid var(--border-color);
-  background: var(--card-background);
-  color: var(--text-color);
   width: 42px;
   height: 42px;
+
+  border: 1px solid var(--border-color);
   border-radius: 50%;
+
+  background: var(--card-background);
+  color: var(--text-color);
+
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.settings-button:hover{
+.settings-button:hover {
   background: var(--accent-color);
   border-color: var(--accent-color);
   transform: rotate(25deg) scale(1.05);
 }
 
 .hero {
-  text-align: center;
   margin-top: 100px;
+  text-align: center;
+
   animation: heroFadeIn 0.8s ease 0.2s both;
 }
 
 .date {
-  opacity: 0.65;
   font-size: 18px;
+  opacity: 0.65;
 }
 
 .clock {
+  margin-top: 10px;
   font-size: 96px;
   font-weight: 500;
-  margin-top: 10px;
 }
 
 .search-section {
   max-width: 700px;
   margin: 45px auto;
+
   animation: heroFadeIn 0.8s ease 0.2s both;
 }
 
@@ -97,13 +106,18 @@ body {
 
 #search-input {
   flex: 1;
+
   padding: 16px 20px;
-  border-radius: 14px;
+
   border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+
   background: rgba(255, 255, 255, 0.08);
   color: white;
+
   outline: none;
   font-size: 16px;
+
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
@@ -114,7 +128,8 @@ body {
   border-color: var(--accent-color);
 
   box-shadow:
-    0 0 0 3px color-mix(
+    0 0 0 3px
+    color-mix(
       in srgb,
       var(--accent-color) 20%,
       transparent
@@ -127,15 +142,21 @@ body {
 
 #search-form button {
   padding: 0 22px;
+
   border: none;
   border-radius: 14px;
-  cursor: pointer;
+
   background: var(--accent-color);
   color: white;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-#search-form button:hover{
+#search-form button:hover {
   opacity: 0.85;
   transform: translateY(-2px);
 }
@@ -144,25 +165,25 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+
   animation: heroFadeIn 0.8s ease 0.3s both;
 }
 
 .card {
   padding: 25px;
+
+  border: 1px solid var(--border-color);
   border-radius: 20px;
 
-  /* translucent glass effect */
   background: var(--card-background);
-  border: 1px solid var(--border-color);
 
-  /* glass blur */
   backdrop-filter: blur(15px);
+
+  animation: cardFadeIn 0.7s ease;
 
   transition:
     transform 0.25s ease,
-    background 0.25s ease,
     border-color 0.25s ease;
-  animation: cardFadeIn 0.7s ease;
 }
 
 .card:hover {
@@ -186,19 +207,24 @@ body {
   gap: 12px;
 
   padding: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
 
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text-color);
+
   text-decoration: none;
 
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .quick-link:hover {
   transform: translateY(-4px) scale(1.02);
+
   background: rgba(255, 255, 255, 0.12);
   border-color: var(--accent-color);
 }
@@ -206,8 +232,10 @@ body {
 .link-icon {
   width: 38px;
   height: 38px;
+
   object-fit: contain;
   border-radius: 10px;
+
   transition: transform 0.25s ease;
 }
 
@@ -220,77 +248,105 @@ body {
   color: white;
 }
 
-@media (max-width: 700px) {
-  .clock {
-    font-size: 60px;
-  }
+.add-link-button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
 
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
 
-  #search-form {
-    flex-direction: column;
-  }
+  background: var(--card-background);
+  color: var(--text-color);
 
-  #search-form button {
-    padding: 14px;
-  }
+  cursor: pointer;
 
-  .quick-links {
-    grid-template-columns: 1fr;
-  }
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-body[data-theme="light"] {
-  --background-color:#f4f5f7;
-  --text-color: #111111;
-  --muted-text: rgba(0, 0, 0, 0.6);
-  --card-background: rgba(0, 0, 0, 0.05);
-  --border-color: rgba(0, 0, 0, 0.12);
-  --wallpaper-overlay: rgba(255, 255, 255, 0.45);
+.add-link-button:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
 }
 
-body[data-theme="dark"] {
-  --background-color: #101114;
-  --text-color: #ffffff;
-  --muted-text: rgba(255, 255, 255, 0.65);
-  --card-background: rgba(255, 255, 255, 0.08);
-  --border-color: rgba(255, 255, 255, 0.12);
-  --wallpaper-overlay: rgba(10, 11, 14, 0.55);
+.custom-link {
+  position: relative;
 }
 
-body[data-accent="blue"] {
-  --accent-color: #3b82f6;
+.delete-link {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  width: 22px;
+  height: 22px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+
+  background: var(--card-background);
+  color: var(--text-color);
+
+  cursor: pointer;
+  opacity: 0;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
-body[data-accent="red"] {
-  --accent-color: #ef4444;
+.custom-link:hover .delete-link {
+  opacity: 1;
 }
 
-body[data-accent="purple"] {
-  --accent-color: #a855f7;
+.delete-link:hover {
+  background: var(--accent-color);
+  transform: scale(1.1);
 }
 
-body[data-accent="green"] {
-  --accent-color: #22c55e;
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  margin: 20px 0 10px;
+
+  animation: weatherAppear 0.5s ease;
 }
 
-body[data-accent="orange"] {
-  --accent-color: #f97316;
+#weather-icon {
+  font-size: 42px;
+}
+
+#weather-temperature {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+#weather-condition {
+  opacity: 0.7;
 }
 
 .settings-panel {
   position: fixed;
   top: 0;
   right: 0;
+
   width: 340px;
   height: 100vh;
+
   padding: 30px;
+
   background: var(--background-color);
   border-left: 1px solid var(--border-color);
+
   transform: translateX(100%);
   transition: transform 0.35s ease;
+
   z-index: 1000;
 }
 
@@ -302,6 +358,7 @@ body[data-accent="orange"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 40px;
 }
 
@@ -312,15 +369,19 @@ body[data-accent="orange"] {
 .close-settings {
   width: 36px;
   height: 36px;
+
   border: 1px solid var(--border-color);
   border-radius: 50%;
+
   background: var(--card-background);
   color: var(--text-color);
+
   font-size: 24px;
   cursor: pointer;
+
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .close-settings:hover {
@@ -344,16 +405,17 @@ body[data-accent="orange"] {
 
 .theme-option {
   flex: 1;
+
   padding: 12px;
+
   border: 1px solid var(--border-color);
   border-radius: 12px;
+
   background: var(--card-background);
   color: var(--text-color);
-  cursor: pointer;
-}
 
-.theme-option,
-.accent-option {
+  cursor: pointer;
+
   transition:
     transform 0.2s ease,
     border-color 0.2s ease;
@@ -372,9 +434,15 @@ body[data-accent="orange"] {
 .accent-option {
   width: 35px;
   height: 35px;
-  border-radius: 50%;
+
   border: 3px solid transparent;
+  border-radius: 50%;
+
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .accent-option:hover {
@@ -401,29 +469,42 @@ body[data-accent="orange"] {
   background: #f97316;
 }
 
-.weather-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 20px 0 10px;
-  animation: weatherAppear 0.5s ease;
+body[data-theme="dark"] {
+  --background-color: #101114;
+  --text-color: #ffffff;
+  --muted-text: rgba(255, 255, 255, 0.65);
+  --card-background: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --wallpaper-overlay: rgba(10, 11, 14, 0.55);
 }
 
-#weather-icon {
-  font-size: 42px;
+body[data-theme="light"] {
+  --background-color: #f4f5f7;
+  --text-color: #111111;
+  --muted-text: rgba(0, 0, 0, 0.6);
+  --card-background: rgba(0, 0, 0, 0.05);
+  --border-color: rgba(0, 0, 0, 0.12);
+  --wallpaper-overlay: rgba(255, 255, 255, 0.45);
 }
 
-#weather-temperature {
-  font-size: 36px;
-  font-weight: 500;
+body[data-accent="blue"] {
+  --accent-color: #3b82f6;
 }
 
-#weather-condition {
-  opacity: 0.7;
+body[data-accent="red"] {
+  --accent-color: #ef4444;
 }
 
-.pulse-container {
-  animation: pageFadeIn 0.7s ease forwards;
+body[data-accent="purple"] {
+  --accent-color: #a855f7;
+}
+
+body[data-accent="green"] {
+  --accent-color: #22c55e;
+}
+
+body[data-accent="orange"] {
+  --accent-color: #f97316;
 }
 
 @keyframes pageFadeIn {
@@ -450,30 +531,6 @@ body[data-accent="orange"] {
   }
 }
 
-@keyframes weatherAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes pageFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes cardFadeIn {
   from {
     opacity: 0;
@@ -486,48 +543,44 @@ body[data-accent="orange"] {
   }
 }
 
-.add-link-button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  background: var(--card-background);
-  color: var(--text-color);
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+@keyframes weatherAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.add-link-button:hover {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  transform: translateY(-2px);
-}
+@media (max-width: 700px) {
+  .pulse-container {
+    padding: 20px;
+  }
 
-.custom-link {
-  position: relative;
-}
+  .clock {
+    font-size: 60px;
+  }
 
-.delete-link {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  width: 22px;
-  height: 22px;
-  border: 1px solid var(--border-color);
-  border-radius: 50%;
-  background: var(--card-background);
-  color: var(--text-color);
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
 
-.custom-link:hover .delete-link {
-  opacity: 1;
-}
+  #search-form {
+    flex-direction: column;
+  }
 
-.delete-link:hover {
-  background: var(--accent-color);
-  transform: scale(1.1);
+  #search-form button {
+    padding: 14px;
+  }
+
+  .quick-links {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-panel {
+    width: 100%;
+  }
 }
