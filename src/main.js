@@ -62,12 +62,13 @@ document.querySelector('#app').innerHTML = `
       </article>
 
     </section>
+  </main>
 
     <div class="settings-panel" id="settings-panel">
       <div class="settings-header">
         <h2>Settings</h2>
 
-        <button class="close-settings" id="close-settings" aria-label="Close-settings">
+        <button type="button" class="close-settings" id="close-settings" aria-label="Close-settings">
           ×
         </button>
       </div>
@@ -97,9 +98,7 @@ document.querySelector('#app').innerHTML = `
           <button class="accent-option orange" data-accent="orange" aria-label="Orange"></button>
         </div>
       </div>
-    </div>  
-
-  </main>
+    </div> 
 `
 
 function updateClock() {
@@ -298,7 +297,7 @@ function getUserLocation() {
     (position) => {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-
+      getLocationName(latitude, longitude);
       getWeather(latitude, longitude);
     },
 
@@ -310,6 +309,36 @@ function getUserLocation() {
         'Unable to get your location';
     }
   );
+}
+
+async function getLocationName(latitude, longitude) {
+  const locationUrl =
+    `https://api.bigdatacloud.net/data/reverse-geocode-client` +
+    `?latitude=${latitude}` +
+    `&longitude=${longitude}` +
+    `&localityLanguage=en`;
+
+  try {
+    const response = await fetch(locationUrl);
+
+    if (!response.ok) {
+      throw new Error('Location request failed');
+    }
+
+    const data = await response.json();
+
+    const city = data.city || data.locality || 'Unknown location';
+    const state = data.principalSubdivision || '';
+
+    document.querySelector('#weather-location').textContent =
+      state ? `${city}, ${state}` : city;
+
+  } catch (error) {
+    console.error('Location name error:', error);
+
+    document.querySelector('#weather-location').textContent =
+      'Location unavailable';
+  }
 }
 
 getUserLocation();

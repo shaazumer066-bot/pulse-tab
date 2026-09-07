@@ -28,6 +28,7 @@ body {
   background-attachment: fixed;
   color: var(--text-color);
   transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 .pulse-container {
@@ -56,18 +57,19 @@ body {
   height: 42px;
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.3s ease;
 }
 
 .settings-button:hover{
   background: var(--accent-color);
   border-color: var(--accent-color);
-  transform: rotate(20deg);
+  transform: rotate(25deg) scale(1.05);
 }
 
 .hero {
   text-align: center;
   margin-top: 100px;
+  animation: heroFadeIn 0.8s ease 0.2s both;
 }
 
 .date {
@@ -84,6 +86,7 @@ body {
 .search-section {
   max-width: 700px;
   margin: 45px auto;
+  animation: heroFadeIn 0.8s ease 0.2s both;
 }
 
 #search-form {
@@ -100,6 +103,21 @@ body {
   color: white;
   outline: none;
   font-size: 16px;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#search-input:focus {
+  border-color: var(--accent-color);
+
+  box-shadow:
+    0 0 0 3px color-mix(
+      in srgb,
+      var(--accent-color) 20%,
+      transparent
+    );
 }
 
 #search-input::placeholder {
@@ -125,6 +143,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  animation: heroFadeIn 0.8s ease 0.3s both;
 }
 
 .card {
@@ -137,6 +156,16 @@ body {
 
   /* glass blur */
   backdrop-filter: blur(15px);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
 }
 
 .card h2 {
@@ -157,19 +186,19 @@ body {
   padding: 14px;
   border-radius: 14px;
 
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
 
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
 
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
 .quick-link:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.02);
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--accent-color);
 }
 
 .link-icon {
@@ -177,6 +206,11 @@ body {
   height: 38px;
   object-fit: contain;
   border-radius: 10px;
+  transition: transform 0.25s ease;
+}
+
+.quick-link:hover .link-icon {
+  transform: scale(1.1);
 }
 
 .link-name {
@@ -254,7 +288,7 @@ body[data-accent="orange"] {
   background: var(--background-color);
   border-left: 1px solid var(--border-color);
   transform: translateX(100%);
-  transition: transfrom 0.3s ease;
+  transition: transform 0.35s ease;
   z-index: 1000;
 }
 
@@ -282,6 +316,14 @@ body[data-accent="orange"] {
   color: var(--text-color);
   font-size: 24px;
   cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.close-settings:hover {
+  background: var(--accent-color);
+  transform: scale(1.08);
 }
 
 .setting-group {
@@ -298,7 +340,7 @@ body[data-accent="orange"] {
   gap: 10px;
 }
 
-.theme-option   {
+.theme-option {
   flex: 1;
   padding: 12px;
   border: 1px solid var(--border-color);
@@ -308,7 +350,15 @@ body[data-accent="orange"] {
   cursor: pointer;
 }
 
+.theme-option,
+.accent-option {
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
 .theme-option:hover {
+  transform: translateY(-2px);
   border-color: var(--accent-color);
 }
 
@@ -326,7 +376,7 @@ body[data-accent="orange"] {
 }
 
 .accent-option:hover {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
 .accent-option.blue {
@@ -353,8 +403,8 @@ body[data-accent="orange"] {
   display: flex;
   align-items: center;
   gap: 15px;
-
   margin: 20px 0 10px;
+  animation: weatherAppear 0.5s ease;
 }
 
 #weather-icon {
@@ -368,4 +418,44 @@ body[data-accent="orange"] {
 
 #weather-condition {
   opacity: 0.7;
+}
+
+.pulse-container {
+  animation: pageFadeIn 0.7s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes weatherAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
