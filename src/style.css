@@ -22,7 +22,7 @@ body {
       var(--wallpaper-overlay),
       var(--wallpaper-overlay)
     ),
-    url("public/images/walpaper.jpg");
+    url("/pulse-tab/images/walpaper.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

@@ -47,15 +47,15 @@ document.querySelector('#app').innerHTML = `
 
         <div class="quick-links">
           <a class="quick-link" href="https://github.com" target="_blank" rel="noopener noreferrer">
-          <img class="link-icon" src="public/images/github.png" alt="GitHub">
+          <img class="link-icon" src="/pulse-tab/images/github.png" alt="GitHub">
           <span class="link-name">Github</span>
           </a> 
           <a class="quick-link" href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-          <img class="link-icon" src="public/images/youtube.png" alt="YouTube">
+          <img class="link-icon" src="/pulse-tab/images/youtube.png" alt="YouTube">
           <span class="link-name">YouTube</span>
           </a>
           <a class="quick-link" href="https://gmail.com" target="_blank" rel="noopener noreferrer">
-          <img class="link-icon" src="public/images/gmail.png" alt="Gmail">
+          <img class="link-icon" src="/pulse-tab/images/gmail.png" alt="Gmail">
           <span class="link-name">Gmail</span>
           </a>
         </div>
