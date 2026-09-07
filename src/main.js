@@ -159,6 +159,13 @@ searchForm.addEventListener('submit', (event) => {
   window.location.href = searchUrl;
 });
 
+document.addEventListener('keydown', (event) => {
+  if (event.ctrlKey && event.key.toLowerCase() === 'k') {
+    event.preventDefault();
+    searchInput.focus();
+  }
+});
+
 const settingsButton = document.querySelector('#settings-button');
 const settingsPanel = document.querySelector('#settings-panel');
 const closeSettings = document.querySelector('#close-settings');
