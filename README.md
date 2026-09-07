@@ -8,15 +8,15 @@ Pulse Tab replaces the default browser new tab with a clean dashboard featuring 
 
 ### Main Dashboard
 
-![Main Dashboard](screenshots/Screenshot 2026-09-07 074149.png)
+![Main Dashboard](screenshots/main-dashboard.png)
 
 ### Settings
 
-![Settings](screenshots/Screenshot 2026-09-07 074306.png)
+![Settings](screenshots/settings.png)
 
 ### Custom Quick Links
 
-![Custom Links](screenshots/Screenshot 2026-09-07 074331.png)
+![Custom Links](screenshots/custom-links.png)
 
 ## Features
 
