@@ -1,100 +1,91 @@
-# pulse-tab
+# Pulse Tab
 
-pulse-tab is a custom new-tab page that has many features like time, web search, weather and themes, etc...
+Pulse Tab is a custom new tab page for a web browser.
 
-I made this because I wanted to learn javascript, css and also I wanted to explore API, So I added weather API :)
-
-## Why I Made This
-
-I started this project as part of Hack Club's Stardance "Give Your Website a Pulse" mission.
-
-At first, I planned to make a simple new-tab page, but I kept adding features as I learned more. I decided to make Pulse Tab feel like a small personal dashboard instead of just a normal new-tab page.
-
-btw my goals was to build everything myself using HTML, CSS, and JavaScript instead of using a website builder.
+It gives you a simple dashboard with a live clock, date, weather, web search, quick links, themes, accent colors, and other small features.
 
 ## Features
 
 ### Live Clock and Date
 
-The main part of Pulse Tab shows the current time and date.
+Pulse Tab shows the current time and date.
 
-The clock updates automatically, so I don't need to refresh the page to see the current time.
+The clock updates automatically, so the page does not need to be refreshed.
 
 ### Dynamic Greeting
 
-Pulse Tab changes the greeting depending on the time of day.(is not it cool enough???;)
+The greeting changes depending on the current time.
 
-For example, it can show:
+It can show:
 
-- Good morning
-- Good afternoon
-- Good evening
-- Good night
+- Good Morning
+- Good Afternoon
+- Good Evening
+- Good Night
 
-This was one of the smaller JavaScript features I added to make the page feel more alive.
+This is handled with JavaScript by checking the current hour.
 
 ### Weather
 
-Pulse Tab uses the user's browser location to get their approximate coordinates.(I know this is coooool!!!!)
+Pulse Tab can get the user's approximate location using the browser's geolocation feature.
 
-I use the Open-Meteo API to get the current weather and the BigDataCloud reverse geocoding API to turn the coordinates into a readable location name.
+The coordinates are then used with APIs to get weather and location information.
 
-The weather card shows:
+The weather section shows:
 
 - Location
 - Temperature
 - Weather condition
 - Weather icon
 
-The browser asks for location permission before using this feature.
+The browser asks for permission before using the location.
 
 ### Web Search
 
-There is a search bar in the middle of the page.
+There is a search bar on the main page.
 
-When a search is submitted, Pulse Tab sends the query to Google.
-
-I also added keyboard shortcuts so the search bar can be accessed quickly.
+When you enter something and submit the form, Pulse Tab opens a Google search for that query.
 
 ### Keyboard Shortcuts
 
-Pulse Tab supports a few shortcuts:
+Pulse Tab has keyboard shortcuts for easier navigation.
 
 - `Ctrl + K` → Focus the search bar
 - `/` → Focus the search bar
-- `Esc` → Close settings and remove focus from search
-
-I added these because I wanted the new-tab page to be usable without always reaching for the mouse.(small detailing :)
+- `Escape` → Close settings and remove focus from search
 
 ### Quick Links
 
-Pulse Tab has quick links for websites I use often.
+The dashboard has quick links for websites that are used often.
 
-The default links include:
+The default links are:
 
 - GitHub
 - YouTube
 - Gmail
 
-I also made it possible to add your own links.
+You can also add your own links.
 
-### Custom Links with LocalStorage
+### Custom Links
 
-When a custom link is added, Pulse Tab saves it using browser `localStorage`.
+Custom links are saved using browser `localStorage`.
 
-This means the links stay there even after refreshing the page.
+This means your links stay saved even after refreshing the page.
 
-Custom links can also be deleted from the dashboard.
+You can also delete custom links whenever you want.
 
 ### Themes
 
-Pulse Tab has both dark and light themes.
+Pulse Tab has two themes:
 
-The selected theme is saved in localStorage, so the preference remains after refreshing the page.
+- Dark
+- Light
+
+The selected theme is saved in `localStorage`, so it stays selected after refreshing the page.
 
 ### Accent Colors
 
-There are several accent colors available:
+You can choose different accent colors:
 
 - Blue
 - Red
@@ -102,72 +93,107 @@ There are several accent colors available:
 - Green
 - Orange
 
-The accent color changes parts of the interface such as buttons, borders, and focus effects.
+The selected accent color is used for things such as buttons, borders, and focus effects.
 
-### Glassmorphism UI(THIS LOOKs COOOOL!!)
+### Glass Effect
 
-I used translucent cards, borders, blur effects, and a background image to create the glass-like appearance of the dashboard.
+The dashboard uses translucent backgrounds, borders, and blur effects to create a glass-like design.
 
-I wanted the interface to look clean without adding too many elements to the screen.
+The background image is also used behind the dashboard.
 
 ### Animations
 
-I added small CSS animations to make the interface feel smoother.
+The CSS contains small animations for different parts of the page.
 
-For example, the main page and cards fade in when the page loads, and buttons and links have hover effects.
+For example, cards can fade in when the page loads and buttons have hover effects.
 
 ### Responsive Design
 
-The layout also adapts to smaller screens.
+The layout changes depending on the screen size.
 
-The dashboard changes from two columns to one column, and the search bar and quick links adjust for mobile-sized screens.
+On smaller screens:
 
-## What I Learned
+- The dashboard changes to one column.
+- The search form changes to a vertical layout.
+- Quick links also change to fit the screen.
+- The settings panel uses the full screen width.
 
-This project helped me learn a lot more about JavaScript than I knew before starting it.
+## How the Code Works
 
-Some of the things I worked with were:
+### JavaScript
 
-- Fetching data from APIs
-- Using browser geolocation
-- Working with `localStorage`
-- Handling form submissions
-- Creating keyboard shortcuts
-- Changing CSS variables with JavaScript
-- Building responsive layouts
-- Deploying a Vite project to GitHub Pages
-- Using Git and GitHub for version control
+Most of the interactive features are handled in `src/main.js`.
 
-The weather feature was especially useful for learning how APIs work because I had to get the user's coordinates first and then use those coordinates to request weather data.
+JavaScript is used for:
 
-## Tech Stack
+- Updating the clock
+- Updating the date
+- Changing the greeting
+- Getting the user's location
+- Fetching weather data
+- Handling the search form
+- Handling keyboard shortcuts
+- Opening and closing settings
+- Changing themes
+- Changing accent colors
+- Adding custom links
+- Removing custom links
+- Saving settings and links in `localStorage`
 
-- HTML
-- CSS
-- JavaScript
-- Vite
-- Open-Meteo API
-- BigDataCloud Reverse Geocoding API
-- LocalStorage
-- GitHub Pages
+### Weather APIs
+
+The weather feature uses the browser's geolocation API first.
+
+The browser gives the approximate latitude and longitude after the user gives permission.
+
+Pulse Tab then uses these coordinates with:
+
+- Open-Meteo API for weather data
+- BigDataCloud Reverse Geocoding API for the location name
+
+The result is then displayed in the weather card.
+
+### LocalStorage
+
+`localStorage` is used to save things in the browser.
+
+Pulse Tab uses it for:
+
+- Custom links
+- Selected theme
+- Selected accent color
+
+Because the data is stored in the browser, it stays available when the page is opened again.
+
+### CSS
+
+The main styling is in `src/style.css`.
+
+CSS is used for:
+
+- Page layout
+- Colors
+- Glass effect
+- Buttons
+- Cards
+- Hover effects
+- Animations
+- Themes
+- Accent colors
+- Mobile layout
+
+The CSS uses variables such as `--accent-color` so JavaScript can change the accent color without having to change every element separately.
 
 ## Screenshots
 
 ### Main Dashboard
 
-![Main Dashboard](screenshots/main-dashboard.png)
+![Pulse Tab Main Dashboard](screenshots/main-dashboard.png)
 
 ### Settings
 
-![Settings](screenshots/settings.png)
+![Pulse Tab Settings](screenshots/settings.png)
 
 ### Custom Quick Links
 
-![Custom Links](screenshots/custom-links.png)
-
-## Running It Locally
-
-Clone the repository:)
-
-```bash
-git clone https://github.com/shaazumer066-bot/pulse-tab.git
+![Pulse Tab Custom Quick Links](screenshots/custom-links.png)
