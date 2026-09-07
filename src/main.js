@@ -167,6 +167,16 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
     searchInput.focus();
   }
+
+  if (event.key === '/' && document.activeElement !== searchInput) {
+    event.preventDefault();
+    searchInput.focus();
+  }
+
+  if (event.key === 'Escape') {
+    settingsPanel.classList.remove('open');
+    searchInput.blur();
+  }
 });
 
 const addLinkButton = document.querySelector('#add-link-button');
