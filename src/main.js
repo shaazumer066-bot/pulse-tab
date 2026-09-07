@@ -59,6 +59,9 @@ document.querySelector('#app').innerHTML = `
           <span class="link-name">Gmail</span>
           </a>
         </div>
+        <button class="add-link-button" id="add-link-button">
+          + Add Link
+        </button>
       </article>
 
     </section>
@@ -164,6 +167,72 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
     searchInput.focus();
   }
+});
+
+const addLinkButton = document.querySelector('#add-link-button');
+const quickLinks = document.querySelector('.quick-links');
+let customLinks = JSON.parse(localStorage.getItem('pulse-links')) || [];
+
+addLinkButton.addEventListener('click', () => {
+  const name = prompt('Enter the website name:');
+
+  if (!name) {
+    return;
+  }
+
+  const url = prompt('Enter the website URL:');
+
+  if (!url) {
+    return;
+  }
+
+  const linkData = {
+    name: name,
+    url: url
+  };
+
+  customLinks.push(linkData);
+
+  localStorage.setItem('pulse-links', JSON.stringify(customLinks));
+
+  addCustomLink(linkData);
+});
+
+function addCustomLink(linkData, index) {
+  const link = document.createElement('div');
+
+  link.className = 'custom-link';
+
+  link.innerHTML = `
+    <a
+      class="quick-link"
+      href="${linkData.url}"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="link-name">${linkData.name}</span>
+    </a>
+
+    <button class="delete-link" data-index="${index}" aria-label="Delete link">
+      ×
+    </button>
+  `;
+
+  quickLinks.appendChild(link);
+
+  link.querySelector('.delete-link').addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    customLinks.splice(index, 1);
+    localStorage.setItem('pulse-links', JSON.stringify(customLinks));
+
+    link.remove();
+  });
+}
+
+customLinks.forEach((linkData, index) => {
+  addCustomLink(linkData, index);
 });
 
 const settingsButton = document.querySelector('#settings-button');

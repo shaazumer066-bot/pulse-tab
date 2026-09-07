@@ -485,3 +485,49 @@ body[data-accent="orange"] {
     transform: translateY(0);
   }
 }
+
+.add-link-button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--card-background);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.add-link-button:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.custom-link {
+  position: relative;
+}
+
+.delete-link {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--card-background);
+  color: var(--text-color);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.custom-link:hover .delete-link {
+  opacity: 1;
+}
+
+.delete-link:hover {
+  background: var(--accent-color);
+  transform: scale(1.1);
+}
