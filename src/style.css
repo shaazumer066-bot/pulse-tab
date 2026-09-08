@@ -18,18 +18,10 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   color: var(--text-color);
-
-  background:
-    linear-gradient(
-      var(--wallpaper-overlay),
-      var(--wallpaper-overlay)
-    ),
-    url("/pulse-tab/images/walpaper.jpg");
-
+  background: linear-gradient(var(--wallpaper-overlay), var(--wallpaper-overlay)), url("/pulse-tab/images/walpaper.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -39,7 +31,6 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 30px;
-
   animation: pageFadeIn 0.7s ease;
 }
 
@@ -57,13 +48,10 @@ body {
 .settings-button {
   width: 42px;
   height: 42px;
-
   border: 1px solid var(--border-color);
   border-radius: 50%;
-
   background: var(--card-background);
   color: var(--text-color);
-
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
 }
@@ -77,7 +65,6 @@ body {
 .hero {
   margin-top: 100px;
   text-align: center;
-
   animation: heroFadeIn 0.8s ease 0.2s both;
 }
 
@@ -95,7 +82,6 @@ body {
 .search-section {
   max-width: 700px;
   margin: 45px auto;
-
   animation: heroFadeIn 0.8s ease 0.2s both;
 }
 
@@ -106,34 +92,19 @@ body {
 
 #search-input {
   flex: 1;
-
   padding: 16px 20px;
-
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 14px;
-
   background: rgba(255, 255, 255, 0.08);
   color: white;
-
   outline: none;
   font-size: 16px;
-
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 #search-input:focus {
   border-color: var(--accent-color);
-
-  box-shadow:
-    0 0 0 3px
-    color-mix(
-      in srgb,
-      var(--accent-color) 20%,
-      transparent
-    );
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 20%, transparent);
 }
 
 #search-input::placeholder {
@@ -142,18 +113,12 @@ body {
 
 #search-form button {
   padding: 0 22px;
-
   border: none;
   border-radius: 14px;
-
   background: var(--accent-color);
   color: white;
-
   cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 #search-form button:hover {
@@ -165,25 +130,17 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-
   animation: heroFadeIn 0.8s ease 0.3s both;
 }
 
 .card {
   padding: 25px;
-
   border: 1px solid var(--border-color);
   border-radius: 20px;
-
   background: var(--card-background);
-
   backdrop-filter: blur(15px);
-
   animation: cardFadeIn 0.7s ease;
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .card:hover {
@@ -205,26 +162,17 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-
   padding: 14px;
-
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
-
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-color);
-
   text-decoration: none;
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
 .quick-link:hover {
   transform: translateY(-4px) scale(1.02);
-
   background: rgba(255, 255, 255, 0.12);
   border-color: var(--accent-color);
 }
@@ -232,10 +180,8 @@ body {
 .link-icon {
   width: 38px;
   height: 38px;
-
   object-fit: contain;
   border-radius: 10px;
-
   transition: transform 0.25s ease;
 }
 
@@ -252,19 +198,12 @@ body {
   width: 100%;
   margin-top: 15px;
   padding: 12px;
-
   border: 1px solid var(--border-color);
   border-radius: 12px;
-
   background: var(--card-background);
   color: var(--text-color);
-
   cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .add-link-button:hover {
@@ -281,22 +220,15 @@ body {
   position: absolute;
   top: -6px;
   right: -6px;
-
   width: 22px;
   height: 22px;
-
   border: 1px solid var(--border-color);
   border-radius: 50%;
-
   background: var(--card-background);
   color: var(--text-color);
-
   cursor: pointer;
   opacity: 0;
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .custom-link:hover .delete-link {
@@ -312,9 +244,7 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-
   margin: 20px 0 10px;
-
   animation: weatherAppear 0.5s ease;
 }
 
@@ -335,18 +265,13 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-
   width: 340px;
   height: 100vh;
-
   padding: 30px;
-
   background: var(--background-color);
   border-left: 1px solid var(--border-color);
-
   transform: translateX(100%);
   transition: transform 0.35s ease;
-
   z-index: 1000;
 }
 
@@ -358,7 +283,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 40px;
 }
 
@@ -369,19 +293,13 @@ body {
 .close-settings {
   width: 36px;
   height: 36px;
-
   border: 1px solid var(--border-color);
   border-radius: 50%;
-
   background: var(--card-background);
   color: var(--text-color);
-
   font-size: 24px;
   cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .close-settings:hover {
@@ -405,20 +323,13 @@ body {
 
 .theme-option {
   flex: 1;
-
   padding: 12px;
-
   border: 1px solid var(--border-color);
   border-radius: 12px;
-
   background: var(--card-background);
   color: var(--text-color);
-
   cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .theme-option:hover {
@@ -434,40 +345,21 @@ body {
 .accent-option {
   width: 35px;
   height: 35px;
-
   border: 3px solid transparent;
   border-radius: 50%;
-
   cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .accent-option:hover {
   transform: scale(1.12);
 }
 
-.accent-option.blue {
-  background: #3b82f6;
-}
-
-.accent-option.red {
-  background: #ef4444;
-}
-
-.accent-option.purple {
-  background: #a855f7;
-}
-
-.accent-option.green {
-  background: #22c55e;
-}
-
-.accent-option.orange {
-  background: #f97316;
-}
+.accent-option.blue { background: #3b82f6; }
+.accent-option.red { background: #ef4444; }
+.accent-option.purple { background: #a855f7; }
+.accent-option.green { background: #22c55e; }
+.accent-option.orange { background: #f97316; }
 
 body[data-theme="dark"] {
   --background-color: #101114;
@@ -487,100 +379,38 @@ body[data-theme="light"] {
   --wallpaper-overlay: rgba(255, 255, 255, 0.45);
 }
 
-body[data-accent="blue"] {
-  --accent-color: #3b82f6;
-}
-
-body[data-accent="red"] {
-  --accent-color: #ef4444;
-}
-
-body[data-accent="purple"] {
-  --accent-color: #a855f7;
-}
-
-body[data-accent="green"] {
-  --accent-color: #22c55e;
-}
-
-body[data-accent="orange"] {
-  --accent-color: #f97316;
-}
+body[data-accent="blue"] { --accent-color: #3b82f6; }
+body[data-accent="red"] { --accent-color: #ef4444; }
+body[data-accent="purple"] { --accent-color: #a855f7; }
+body[data-accent="green"] { --accent-color: #22c55e; }
+body[data-accent="orange"] { --accent-color: #f97316; }
 
 @keyframes pageFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes heroFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes weatherAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @media (max-width: 700px) {
-  .pulse-container {
-    padding: 20px;
-  }
-
-  .clock {
-    font-size: 60px;
-  }
-
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-
-  #search-form {
-    flex-direction: column;
-  }
-
-  #search-form button {
-    padding: 14px;
-  }
-
-  .quick-links {
-    grid-template-columns: 1fr;
-  }
-
-  .settings-panel {
-    width: 100%;
-  }
+  .pulse-container { padding: 20px; }
+  .clock { font-size: 60px; }
+  .dashboard { grid-template-columns: 1fr; }
+  #search-form { flex-direction: column; }
+  #search-form button { padding: 14px; }
+  .quick-links { grid-template-columns: 1fr; }
+  .settings-panel { width: 100%; }
 }
